@@ -16,9 +16,9 @@ class ApiController extends Controller
     {
         $response = Http::withHeaders([
             'accept' => 'application/json',
-            'authorization' => env('RUANGAPI_KEY'),
+            'authorization' => env('API_KEY'),
             'content-type' => 'application/json',
-        ])->get('https://ruangapi.com/api/v1/provinces');
+        ])->get('https://api.rajaongkir.com/starter/province');
 
         return $response;
     }
