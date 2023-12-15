@@ -22,7 +22,7 @@ class Create extends Component
      */
     public function store()
     {
-        $extension = pathinfo($this->image->getFilename(), PATHINFO_EXTENSION) ?? '';
+        $extension = pathinfo($this->image->getFilename(), PATHINFO_EXTENSION);
         if (!in_array($extension, ['png', 'jpeg', 'bmp', 'gif', 'jpg'])) {
             $this->reset('image');
         }
