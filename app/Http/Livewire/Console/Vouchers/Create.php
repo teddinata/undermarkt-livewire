@@ -35,16 +35,35 @@ class Create extends Component
             'content'                => 'required'
         ]);
 
-        $this->image->store('public/vouchers');
+        // $this->image->store('public/vouchers');
 
-        $voucher = Voucher::create([
-            'title'                     => $this->title,
-            'voucher'                   => $this->voucher,
-            'nominal_voucher'           => $this->nominal_voucher,
-            'total_minimal_shopping'    => $this->total_minimal_shopping,
-            'content'                   => $this->content,
-            'image'                     => $this->image->hashName()
-        ]);
+        if ($this->image) {
+            $extension = pathinfo($this->image->getFilename(), PATHINFO_EXTENSION);
+
+            // Validasi ekstensi file gambar
+            if (!in_array($extension, ['png', 'jpeg', 'bmp', 'gif', 'jpg'])) {
+                $this->reset('image');
+                // Atau tambahkan pesan kesalahan jika perlu
+                $this->addError('image', 'Invalid image format. Please upload a valid image.');
+                return;
+            }
+
+            // Lanjutkan dengan penyimpanan dan pembuatan Category jika validasi berhasil
+            $this->image->store('public/vouchers');
+
+            $voucher = Voucher::create([
+                'title'                     => $this->title,
+                'voucher'                   => $this->voucher,
+                'nominal_voucher'           => $this->nominal_voucher,
+                'total_minimal_shopping'    => $this->total_minimal_shopping,
+                'content'                   => $this->content,
+                'image'                     => $this->image->hashName()
+            ]);
+
+            // Tambahkan logika atau tindakan lain setelah pembuatan Category
+        }
+
+
 
         if($voucher) {
             session()->flash('success', 'Data Voucher saved successfully');
