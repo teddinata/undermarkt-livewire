@@ -70,7 +70,7 @@ class Create extends Component
             'nominal_voucher'           => $this->nominal_voucher,
             'total_minimal_shopping'    => $this->total_minimal_shopping,
             'content'                   => $this->content,
-            'image'                     => null
+            'image'                     => 'noimage.png'
         ]);
 
 
