@@ -63,6 +63,15 @@ class Create extends Component
             // Tambahkan logika atau tindakan lain setelah pembuatan Category
         }
 
+        // jika tidak ada gambar yang diunggah
+        $voucher = Voucher::create([
+            'title'                     => $this->title,
+            'voucher'                   => $this->voucher,
+            'nominal_voucher'           => $this->nominal_voucher,
+            'total_minimal_shopping'    => $this->total_minimal_shopping,
+            'content'                   => $this->content,
+            'image'                     => null
+        ]);
 
 
         if($voucher) {
