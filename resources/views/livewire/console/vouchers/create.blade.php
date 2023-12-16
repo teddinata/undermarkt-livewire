@@ -31,7 +31,7 @@ Tambah Voucher &mdash; {{ $setting->admin_title }}
                             <div class="form-group">
                                 <label>Image</label>
                                 <input type="file" id="image" class="form-control" wire:model="image"
-                                    required>
+                                    >
                                 @error('image')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}
