@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 class Create extends Component
 {
     use WithFileUploads;
-    
+
 
     /**
      * public variable
@@ -27,7 +27,7 @@ class Create extends Component
     public function store()
     {
         $this->validate([
-            'image'             => 'required|image',
+            'image'             => 'nullable|image',
             'title'             => 'required',
             'voucher'           => 'required',
             'nominal_voucher'   => 'required',
